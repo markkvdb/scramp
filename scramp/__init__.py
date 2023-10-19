@@ -1,4 +1,9 @@
-from importlib.metadata import version
+import sys
+
+if sys.version_info >= (3, 8):
+    from importlib import metadata
+else:
+    from importlib_metadata import metadata
 
 from scramp.core import (
     ScramClient,
@@ -9,4 +14,4 @@ from scramp.core import (
 
 __all__ = [ScramClient, ScramMechanism, ScramException, make_channel_binding]
 
-__version__ = version("scramp")
+__version__ = metadata.version("scramp")
